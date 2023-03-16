@@ -310,6 +310,15 @@ public class Library
 	// Play a specific song/audiobook in a playlist
 	public boolean playPlaylist(String playlistTitle, int indexInPL)
 	{
+		for (int i = 0; i<this.playlists.size();i++) {
+			if (playlists.get(i).getTitle().equals(playlistTitle)) {
+				playlists.get(i).play(indexInPL);
+				return true;
+//				else if (type.equalsIgnoreCase("PODCAST")) {
+//					playlists.get(i).addContent(podcasts.get(index));
+//				}
+			}
+		}
 		return false;
 	}
 	
@@ -319,6 +328,21 @@ public class Library
 	// for that list
 	public boolean addContentToPlaylist(String type, int index, String playlistTitle)
 	{
+		for (int i = 0; i<this.playlists.size();i++) {
+			if (playlists.get(i).getTitle().equals(playlistTitle)) {
+				if (type.equalsIgnoreCase("AUDIOBOOK")) {
+					playlists.get(i).addContent(audiobooks.get(index));
+				}
+				else if (type.equalsIgnoreCase("SONG")) {
+					playlists.get(i).addContent(songs.get(index));
+				}
+				return true;
+//				else if (type.equalsIgnoreCase("PODCAST")) {
+//					playlists.get(i).addContent(podcasts.get(index));
+//				}
+			}
+			
+		}
 		return false;
 	}
 
@@ -326,6 +350,12 @@ public class Library
 	// Make sure the given index of the song/audiobook/podcast in the playlist is valid 
 	public boolean delContentFromPlaylist(int index, String title)
 	{
+		for (int i = 0; i<this.playlists.size();i++) {
+			if (playlists.get(i).getTitle().equals(title)) {
+					playlists.get(i).deleteContent(index);
+				return true;
+			}
+		}
 		return false;
 	}
 	
