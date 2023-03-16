@@ -210,9 +210,15 @@ public class MyAudioUI
 			// Delete a song from the list of songs in mylibrary and any play lists it belongs to
 			// Read a song index from the keyboard
 			// see class Library for the method to call
-			else if (action.equalsIgnoreCase("DELSONG")) 
+			else if (action.equalsIgnoreCase("DELSONG")) 												//come back to this
 			{
-					
+				int index = 0;
+				System.out.print("Song Number: ");
+				if (scanner.hasNextInt()) {
+					index = scanner.nextInt();
+					scanner.nextLine();
+				}
+
 			}
 			// Read a title string from the keyboard and make a playlist
 			// see class Library for the method to call
