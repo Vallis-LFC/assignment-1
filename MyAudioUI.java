@@ -218,6 +218,7 @@ public class MyAudioUI
 					index = scanner.nextInt();
 					scanner.nextLine();
 				}
+				
 
 			}
 			// Read a title string from the keyboard and make a playlist

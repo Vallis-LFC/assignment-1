@@ -140,17 +140,19 @@ public class Library
 
 	// Delete a song from the library (i.e. the songs list) - 
 	// also go through all playlists and remove it from any playlist as well if it is part of the playlist
-//	public boolean deleteSong(int index)
-//	{
-//		this.songs.remove(index);
-//		for (int i = 0; i<this.playlists.size();i++) {
-//			for (int i = 0;)
-//			if (playlists.get(i).contains(this.songs.get(index))) {
-//				
-//			}
-//		}
-//		return false;
-//	}
+	public boolean deleteSong(int index)
+	{
+		this.songs.remove(index);
+		for (int i = 0; i<this.playlists.size();i++) {
+			for (int x = 0; x<this.playlists.get(i).getContent().size();x++) {
+				if (playlists.get(i).contains(this.songs.get(index))) {
+				
+			}
+			}
+			
+		}
+		return false;
+	}
 	
   //Sort songs in library by year
 	public void sortSongsByYear()
@@ -360,4 +362,3 @@ public class Library
 	}
 	
 }
-
