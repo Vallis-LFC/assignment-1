@@ -114,9 +114,9 @@ public class MyAudioUI
 					if (!mylibrary.printAudioBookTOC(index)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-					else {
-					mylibrary.printAudioBookTOC(index);
-				}
+//					else {
+//					mylibrary.printAudioBookTOC(index);
+//				}
 				
 				
 			}
@@ -144,9 +144,9 @@ public class MyAudioUI
 					if (!mylibrary.playAudioBook(index, chapter)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-				else {
-					mylibrary.playAudioBook(index,chapter);
-				}
+//				else {
+//					mylibrary.playAudioBook(index,chapter);
+//				}
 			}
 			// Print the episode titles for the given season of the given podcast
 			// In addition to the podcast index from the list of podcasts, 
@@ -178,9 +178,9 @@ public class MyAudioUI
 				if (!mylibrary.playPlaylist(title)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-				else {
-					mylibrary.playPlaylist(title);
-				}
+//				else {
+//					mylibrary.playPlaylist(title);
+//				}
 			}
 			// Specify a playlist title (string) 
 			// Read the index of a song/audiobook/podcast in the playist from the keyboard 
@@ -203,9 +203,9 @@ public class MyAudioUI
 				if (!mylibrary.printPlaylist(title)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-				else {
-					mylibrary.playPlaylist(title,index);
-				}
+//				else {
+//					mylibrary.playPlaylist(title,index);
+//				}
 			}
 			// Delete a song from the list of songs in mylibrary and any play lists it belongs to
 			// Read a song index from the keyboard
@@ -221,9 +221,9 @@ public class MyAudioUI
 				if (!mylibrary.deleteSong(index)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-				else {
-					mylibrary.deleteSong(index);
-				}
+//				else {
+//					mylibrary.deleteSong(index);
+//				}
 
 			}
 			// Read a title string from the keyboard and make a playlist
@@ -239,9 +239,9 @@ public class MyAudioUI
 				if (!mylibrary.makePlaylist(title)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-				else {
-					mylibrary.makePlaylist(title);
-				}
+//				else {
+//					mylibrary.makePlaylist(title);
+//				}
 				
 			}
 			// Print the content information (songs, audiobooks, podcasts) in the playlist
@@ -259,7 +259,7 @@ public class MyAudioUI
 					System.out.println(mylibrary.getErrorMessage());
 				}
 				
-					mylibrary.printPlaylist(title);
+//					mylibrary.printPlaylist(title);
 				
 			}
 			// Add content (song, audiobook, podcast) from mylibrary (via index) to a playlist
