@@ -89,12 +89,12 @@ public class MyAudioUI
 			
 				
 				// Print error message if the song doesn't exist in the library
-					if (!mylibrary.playSong(index)) {
+					if (mylibrary.playSong(index)==false) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-				else {
-					mylibrary.playSong(index);
-				}
+//				else {
+//					mylibrary.playSong(index);
+//				}
 			}
 			// Print the table of contents (TOC) of an audiobook that
 			// has been downloaded to the library. Get the desired book index

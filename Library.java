@@ -11,7 +11,7 @@ public class Library
 	private ArrayList<AudioBook> 	audiobooks;
 	private ArrayList<Playlist> 	playlists; 
 	
-	//private ArrayList<Podcast> 	podcasts;
+//	private ArrayList<Podcast> 	podcasts;
 	
 	// Public methods in this class set errorMesg string 
 	// Error Messages can be retrieved from main in class MyAudioUI by calling  getErrorMessage()
@@ -60,17 +60,18 @@ public class Library
 			Song download = (Song) content;
 			songs.add(download);
 		}
-		return true;
+		
 		//for podcast
-//		else if (content.getType() == "SONG") {
-//			for (int i = 0; i<songs.size();i++) {
-//				if (content.getTitle().equals(songs.get(i).getTitle())) {
-//					return false;
-//				}
-//			}
-//			Song download = (Song) content;
-//			songs.add(download);
-//		}
+		else if (content.getType() == "SONG") {
+			for (int i = 0; i<songs.size();i++) {
+				if (content.getTitle().equals(songs.get(i).getTitle())) {
+					return false;
+				}
+			}
+			Song download = (Song) content;
+			songs.add(download);
+		}
+		return true;
 	}
 	
 	// Print Information (printInfo()) about all songs in the array list
@@ -223,6 +224,7 @@ public class Library
 			errorMsg = "Song Not Found";
 			return false;
 		}
+		System.out.println("did this repeat");
 		songs.get(index-1).play();
 		return true;
 	}
@@ -344,10 +346,10 @@ public class Library
 				else if (type.equalsIgnoreCase("SONG")) {
 					playlists.get(i).addContent(songs.get(index));
 				}
-				return true;
 //				else if (type.equalsIgnoreCase("PODCAST")) {
 //					playlists.get(i).addContent(podcasts.get(index));
 //				}
+				return true;
 			}
 			
 		}
