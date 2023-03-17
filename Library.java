@@ -142,11 +142,17 @@ public class Library
 	// also go through all playlists and remove it from any playlist as well if it is part of the playlist
 	public boolean deleteSong(int index)
 	{
+		if (index < 1 || index > songs.size())
+		{
+			errorMsg = "Song Not Found";
+			return false;
+		}
 		this.songs.remove(index);
-		for (int i = 0; i<this.playlists.size();i++) {
-			for (int x = 0; x<this.playlists.get(i).getContent().size();x++) {
-				if (playlists.get(i).contains(this.songs.get(index))) {
-				
+		for (int i = 0; i<this.playlists.size();i++) { //loops through all playlists to ensure none of them are left out.
+			for (int x = 0; x<this.playlists.get(i).getContent().size();x++) { // loops through the playlist to find the song
+				if (playlists.get(i).getContent().get(x).equals(this.songs.get(index)) && this.playlists.get(i).getContent().get(x).getType().equals("SONG")) { //checks if equal and checks if type is song 
+					this.playlists.get(i).getContent().remove(x);	//removes the song in the playlist
+					return true;
 			}
 			}
 			

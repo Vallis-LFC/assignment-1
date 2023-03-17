@@ -218,7 +218,12 @@ public class MyAudioUI
 					index = scanner.nextInt();
 					scanner.nextLine();
 				}
-				
+				if (!mylibrary.deleteSong(index)) {
+					System.out.println(mylibrary.getErrorMessage());
+				}
+				else {
+					mylibrary.deleteSong(index);
+				}
 
 			}
 			// Read a title string from the keyboard and make a playlist
