@@ -51,7 +51,6 @@ public class AudioBook extends AudioContent
 	// Then make use of the the play() method of the superclass
 	public void play()
 	{
-		System.out.println("did this repeat");
 		super.setAudioFile(chapterTitles.get(currentChapter)); //sets the chapter
 		super.play();
 	}

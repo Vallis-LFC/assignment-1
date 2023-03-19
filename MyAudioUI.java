@@ -162,6 +162,26 @@ public class MyAudioUI
 			// see class Library for the method to call
 			else if (action.equalsIgnoreCase("PLAYPOD")) 
 			{
+				int index = 0;
+				int season = 0;
+				int episode = 0;
+				
+				System.out.print("Podcast Number: ");	//asks for the input of the index
+				if (scanner.hasNextInt()) {
+					index = scanner.nextInt();
+					scanner.nextLine();
+				}
+				System.out.print("Season: ");
+				if (scanner.hasNextInt()) {
+					season = scanner.nextInt();
+					scanner.nextLine();
+				}
+				System.out.print("Episode: ");
+				if (scanner.hasNextInt()) {
+					episode = scanner.nextInt();
+					scanner.nextLine();
+				}
+				if(!mylibrary.)
 				
 			}
 			// Specify a playlist title (string) 

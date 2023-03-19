@@ -11,7 +11,7 @@ public class Library
 	private ArrayList<AudioBook> 	audiobooks;
 	private ArrayList<Playlist> 	playlists; 
 	
-//	private ArrayList<Podcast> 	podcasts;
+	private ArrayList<Podcast> 	podcasts;
 	
 	// Public methods in this class set errorMesg string 
 	// Error Messages can be retrieved from main in class MyAudioUI by calling  getErrorMessage()
@@ -28,7 +28,7 @@ public class Library
 		songs 			= new ArrayList<Song>(); 
 		audiobooks 	= new ArrayList<AudioBook>(); ;
 		playlists   = new ArrayList<Playlist>();
-		//podcasts		= new ArrayList<Podcast>(); ;
+		podcasts		= new ArrayList<Podcast>(); ;
 	}
 	/*
 	 * Download audio content from the store. Since we have decided (design decision) to keep 3 separate lists in our library
@@ -98,12 +98,12 @@ public class Library
 	}
 	
   // Print Information (printInfo()) about all podcasts in the array list
-//	public void listAllPodcasts()
-//	{
-//		for (int i = 0; i<this.podcasts.size();i++) {
-//			this.podcasts.get(i).printInfo();
-//		}
-//	}
+	public void listAllPodcasts()
+	{
+		for (int i = 0; i<this.podcasts.size();i++) {
+			this.podcasts.get(i).printInfo();
+		}
+	}
 	
   // Print the name of all playlists in the playlists array list
 	// First print the index number as in listAllSongs() above
@@ -224,7 +224,7 @@ public class Library
 			errorMsg = "Song Not Found";
 			return false;
 		}
-		System.out.println("did this repeat");
+	
 		songs.get(index-1).play();
 		return true;
 	}
@@ -294,7 +294,7 @@ public class Library
 	public boolean printPlaylist(String title)
 	{
 		for (int i = 0; i<this.playlists.size();i++) {
-			System.out.println("in loop");
+			
 			if(playlists.get(i).getTitle().equals(title)) {
 				playlists.get(i).printContents();
 				return true;
