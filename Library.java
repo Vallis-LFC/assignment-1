@@ -267,12 +267,13 @@ public class Library
 			errorMsg = "Podcast Not Found";
 			return false;
 		}
-		if (season < 1 || season > podcasts.get(index).getSeasons().size())
+		if (season < 1 || season > podcasts.get(index-1).getSeasons().size())
 		{
 			errorMsg = "Season Not Found";
 			return false;
 		}
-		this.podcasts.get(index-1).printTOC(season-1);
+		
+		this.podcasts.get(index-1).printTOC(season);
 		return true;
 	}
 	
@@ -375,13 +376,13 @@ public class Library
 		for (int i = 0; i<this.playlists.size();i++) {
 			if (playlists.get(i).getTitle().equals(playlistTitle)) {
 				if (type.equalsIgnoreCase("AUDIOBOOK")) {
-					playlists.get(i).addContent(audiobooks.get(index));
+					playlists.get(i).addContent(audiobooks.get(index-1));
 				}
 				else if (type.equalsIgnoreCase("SONG")) {
-					playlists.get(i).addContent(songs.get(index));
+					playlists.get(i).addContent(songs.get(index-1));
 				}
 				else if (type.equalsIgnoreCase("PODCAST")) {
-					playlists.get(i).addContent(podcasts.get(index));
+					playlists.get(i).addContent(podcasts.get(index-1));
 				}
 				return true;
 			}

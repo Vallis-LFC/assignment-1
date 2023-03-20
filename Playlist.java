@@ -73,7 +73,7 @@ public class Playlist
 			System.out.println("Content Not Found");
 		}
 		System.out.print(this.title);
-		this.contents.get(index-1).play();
+		this.contents.get(index).play();
 	}
 	
 	public boolean contains(int index)

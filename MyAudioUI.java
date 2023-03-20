@@ -162,7 +162,7 @@ public class MyAudioUI
 					season = scanner.nextInt();
 					scanner.nextLine();
 				}
-				if(!mylibrary.printPodcastEpisodes(index, season)) {
+				if(!mylibrary.printPodcastEpisodes(index, season-1)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
 			}
