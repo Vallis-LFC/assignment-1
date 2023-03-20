@@ -11,7 +11,7 @@ public static final String TYPENAME =	"PODCAST";
 	public Podcast(String title, int year, String id, String type, String audioFile, int length, String host, ArrayList<Season> seasons)
 	{
 		// Make use of the constructor in the super class AudioContent. 
-		// Initialize additional AudioBook instance variables. 
+		// Initialize additional Podcast instance variables. 
 		super(title,year,id,type,audioFile,length); 	//recalls the constructor in audiocontent
 		//sets the other parameters and intializes the private variables.
 		this.host = host;	
@@ -24,14 +24,14 @@ public static final String TYPENAME =	"PODCAST";
 		return TYPENAME;
 	}
 
-  // Print information about the audiobook. First print the basic information of the AudioContent 
-	// by making use of the printInfo() method in superclass AudioContent and then print author and narrator
+  // Print information about the podcast. First print the basic information of the AudioContent 
+	// by making use of the printInfo() method in superclass AudioContent and then print author and host
 	// see the video
 	public void printInfo()
 	{
 		super.printInfo();
-		System.out.print(" Host: "+this.host);
-		System.out.println("Seasons: "+this.seasons.size());
+		System.out.print("Host: "+this.host+"\n Seasons: "+this.seasons.size()+"\n");
+
 	}
 
 	
@@ -57,11 +57,11 @@ public static final String TYPENAME =	"PODCAST";
 	}
 
 	
-	//Two AudioBooks are equal if their AudioContent information is equal and both the author and narrators are equal
+	//Two AudioBooks are equal if their AudioContent information is equal and both the host and seasons are equal
 	public boolean equals(Object other)
 	{
 		Podcast other_book = (Podcast)other;
-		return super.equals(other_book) && this.host.equals(other_book.host) ;
+		return super.equals(other_book) && this.host.equals(other_book.host) && this.seasons.equals(other_book.seasons);
 	
 	}
 	
@@ -80,25 +80,29 @@ public static final String TYPENAME =	"PODCAST";
 		this.host = host;
 	}
 
+	public ArrayList<Season> getSeasons()
+	{
+		return seasons;
+	}
 
 	public ArrayList<String> getEpisodeTitles()
 	{
-		return seasons.;
+		return seasons.get(currentSeason).episodeTitles;
 	}
 
 	public void setChapterTitles(ArrayList<String> chapterTitles)
 	{
-		this.chapterTitles = chapterTitles;
+		this.seasons.get(currentSeason).episodeTitles = chapterTitles;
 	}
 
-	public ArrayList<String> getChapters()
+	public ArrayList<String> getEpisodes()
 	{
-		return chapters;
+		return this.seasons.get(currentSeason).episodeFiles; 
 	}
 
-	public void setChapters(ArrayList<String> chapters)
+	public void setChapters(ArrayList<String> episodes)
 	{
-		this.chapters = chapters;
+		this.seasons.get(currentSeason).episodeFiles = episodes;
 	}
 
 	// Select a specific chapter to play - nothing to do here

@@ -85,6 +85,8 @@ public class AudioContentStore
 			// Create a podcast object if you are doing the bonus see the makeSeasons() method below
 			// It is currently commented out. It makes use of a class Season you may want to also create
 			// or change it to something else
+			Podcast podcast = new Podcast("The Secret Life of Canada",2018,"376",Podcast.TYPENAME,"",0,"Leah-Simone Bowen, Falen Johnson",makeSeasons());
+			contents.add(podcast);
 					
 		}
 		

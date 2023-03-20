@@ -44,10 +44,10 @@ public class MyAudioUI
 			{
 				mylibrary.listAllAudioBooks(); 
 			}
-//			else if (action.equalsIgnoreCase("PODCASTS"))	// List all songs
-//			{
-//				mylibrary.listAllPodcasts(); 
-		//	}
+			else if (action.equalsIgnoreCase("PODCASTS"))	// List all songs
+			{
+				mylibrary.listAllPodcasts(); 
+			}
 			else if (action.equalsIgnoreCase("ARTISTS"))	// List all songs
 			{
 				mylibrary.listAllArtists(); 
@@ -144,9 +144,7 @@ public class MyAudioUI
 					if (!mylibrary.playAudioBook(index, chapter)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-//				else {
-//					mylibrary.playAudioBook(index,chapter);
-//				}
+
 			}
 			// Print the episode titles for the given season of the given podcast
 			// In addition to the podcast index from the list of podcasts, 
@@ -154,7 +152,23 @@ public class MyAudioUI
 			// see class Library for the method to call
 			else if (action.equalsIgnoreCase("PODTOC")) 
 			{
+				//initialize the userinputs
+				int index = 0; 
+				int season = 0;
 				
+				System.out.print("Podcast Number: ");	//asks for the input of the podcast
+				if (scanner.hasNextInt()) {
+					index = scanner.nextInt();
+					scanner.nextLine();
+				}
+				System.out.print("Season: ");	//asks for the input of the season
+				if (scanner.hasNextInt()) {
+					season = scanner.nextInt();
+					scanner.nextLine();
+				}
+				if(!mylibrary.printPodcastEpisodes(index, season)) {
+					System.out.println(mylibrary.getErrorMessage());
+				}
 			}
 			// Similar to playsong above except for podcast
 			// In addition to the podcast index from the list of podcasts, 
@@ -166,22 +180,24 @@ public class MyAudioUI
 				int season = 0;
 				int episode = 0;
 				
-				System.out.print("Podcast Number: ");	//asks for the input of the index
+				System.out.print("Podcast Number: ");	//asks for the input of the podcast
 				if (scanner.hasNextInt()) {
 					index = scanner.nextInt();
 					scanner.nextLine();
 				}
-				System.out.print("Season: ");
+				System.out.print("Season: ");	//asks for the input of the season
 				if (scanner.hasNextInt()) {
 					season = scanner.nextInt();
 					scanner.nextLine();
 				}
-				System.out.print("Episode: ");
+				System.out.print("Episode: ");	//asks for the input of the episode
 				if (scanner.hasNextInt()) {
 					episode = scanner.nextInt();
 					scanner.nextLine();
 				}
-				if(!mylibrary.)
+				if(!mylibrary.playPodcast(index, season, episode)) {
+					System.out.println(mylibrary.getErrorMessage());
+				}
 				
 			}
 			// Specify a playlist title (string) 
@@ -198,9 +214,7 @@ public class MyAudioUI
 				if (!mylibrary.playPlaylist(title)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-//				else {
-//					mylibrary.playPlaylist(title);
-//				}
+
 			}
 			// Specify a playlist title (string) 
 			// Read the index of a song/audiobook/podcast in the playist from the keyboard 
@@ -215,25 +229,23 @@ public class MyAudioUI
 					title = scanner.next();
 					scanner.nextLine();
 				}
-				System.out.print("Library Content: ");	//asks for the input of the index
-				if (scanner.hasNext()) {
-					title = scanner.next();
+				System.out.print("Library Content: ");	//asks for the input of the content
+				if (scanner.hasNextInt()) {
+					index = scanner.nextInt();
 					scanner.nextLine();
 				}
-				if (!mylibrary.printPlaylist(title)) {
+				if (!mylibrary.playPlaylist(title,index)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-//				else {
-//					mylibrary.playPlaylist(title,index);
-//				}
+
 			}
 			// Delete a song from the list of songs in mylibrary and any play lists it belongs to
 			// Read a song index from the keyboard
 			// see class Library for the method to call
-			else if (action.equalsIgnoreCase("DELSONG")) 												//come back to this
+			else if (action.equalsIgnoreCase("DELSONG")) 												
 			{
 				int index = 0;
-				System.out.print("Song Number: ");
+				System.out.print("Song Number: ");	//asks for the input of the song
 				if (scanner.hasNextInt()) {
 					index = scanner.nextInt();
 					scanner.nextLine();
@@ -241,9 +253,6 @@ public class MyAudioUI
 				if (!mylibrary.deleteSong(index)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-//				else {
-//					mylibrary.deleteSong(index);
-//				}
 
 			}
 			// Read a title string from the keyboard and make a playlist
@@ -259,9 +268,7 @@ public class MyAudioUI
 				if (!mylibrary.makePlaylist(title)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-//				else {
-//					mylibrary.makePlaylist(title);
-//				}
+
 				
 			}
 			// Print the content information (songs, audiobooks, podcasts) in the playlist
@@ -270,7 +277,7 @@ public class MyAudioUI
 			else if (action.equalsIgnoreCase("PRINTPL"))	// print playlist content
 			{
 				String title = "";
-				System.out.print("Playlist Title: ");	//asks for the input of the index
+				System.out.print("Playlist Title: ");	//asks for the input of the playlist
 				if (scanner.hasNext()) {
 					title = scanner.next();
 					scanner.nextLine();
@@ -279,7 +286,6 @@ public class MyAudioUI
 					System.out.println(mylibrary.getErrorMessage());
 				}
 				
-//					mylibrary.printPlaylist(title);
 				
 			}
 			// Add content (song, audiobook, podcast) from mylibrary (via index) to a playlist
@@ -291,17 +297,17 @@ public class MyAudioUI
 				String title = "";
 				String type = "";
 				int index = 0;
-				System.out.print("Playlist Title: ");
+				System.out.print("Playlist Title: ");	//asks for title
 				if (scanner.hasNext()) {
 					title = scanner.next();
 					scanner.nextLine();
 				}
-				System.out.print("Content Type [SONG, PODCAST, AUDIOBOOK]: ");
+				System.out.print("Content Type [SONG, PODCAST, AUDIOBOOK]: ");	//asks for the type
 				if (scanner.hasNext()) {
 					type = scanner.next();
 					scanner.nextLine();
 				}
-				System.out.print("Library Content #: ");
+				System.out.print("Library Content #: ");	//asks for the content index
 				if (scanner.hasNextInt()) {
 					index = scanner.nextInt();
 					scanner.nextLine();

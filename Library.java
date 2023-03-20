@@ -42,18 +42,20 @@ public class Library
 	 */
 	public boolean download(AudioContent content)
 	{
-		if(content.getType() == "AUDIOBOOK") {
+		if(content.getType().equalsIgnoreCase("audiobook")) {
 			for (int i = 0; i<audiobooks.size();i++) {
 				if (content.getTitle().equals(audiobooks.get(i).getTitle())) {
+					errorMsg = "AudioBook already downloaded";
 					return false;
 				}
 			}
 			AudioBook download = (AudioBook) content;
 			audiobooks.add(download);
 		}
-		else if (content.getType() == "SONG") {
+		else if (content.getType().equalsIgnoreCase("song")) {
 			for (int i = 0; i<songs.size();i++) {
 				if (content.getTitle().equals(songs.get(i).getTitle())) {
+					errorMsg = "Song already downloaded";
 					return false;
 				}
 			}
@@ -62,14 +64,15 @@ public class Library
 		}
 		
 		//for podcast
-		else if (content.getType() == "SONG") {
-			for (int i = 0; i<songs.size();i++) {
-				if (content.getTitle().equals(songs.get(i).getTitle())) {
+		else if (content.getType() == "PODCAST") {
+			for (int i = 0; i<podcasts.size();i++) {
+				if (content.getTitle().equals(podcasts.get(i).getTitle())) {
+					errorMsg = "Podcast already downloaded";
 					return false;
 				}
 			}
-			Song download = (Song) content;
-			songs.add(download);
+			Podcast download = (Podcast) content;
+			podcasts.add(download);
 		}
 		return true;
 	}
@@ -233,19 +236,54 @@ public class Library
 	// Bonus
 	public boolean playPodcast(int index, int season, int episode)
 	{
-		return false;
+		//checks if the parameters are invalid
+		if (index < 1 || index > podcasts.size())	
+		{
+			errorMsg = "Podcast Not Found";
+			return false;
+		}
+		if (season < 1 || season > podcasts.get(index).getSeasons().size())
+		{
+			errorMsg = "Season Not Found";
+			return false;
+		}
+		if (season < 1 || season > podcasts.get(index).getSeasons().get(season).episodeFiles.size())
+		{
+			errorMsg = "Episode Not Found";
+			return false;
+		}
+		
+		this.podcasts.get(index).playEp(episode, season);
+		return true;
 	}
 	
 	// Print the episode titles of a specified season
 	// Bonus 
 	public boolean printPodcastEpisodes(int index, int season)
 	{
-		return false;
+		//checks if the parameters are invalid
+		if (index < 1 || index > podcasts.size())
+		{
+			errorMsg = "Podcast Not Found";
+			return false;
+		}
+		if (season < 1 || season > podcasts.get(index).getSeasons().size())
+		{
+			errorMsg = "Season Not Found";
+			return false;
+		}
+		ArrayList<String>epTitles = this.podcasts.get(index-1).getSeasons().get(season).episodeTitles; //creates a var for this long cmd
+		for (int i = 0; i<epTitles.size();i++ ) {
+			System.out.print("Episode "+(i+1)+". "+epTitles.get(i));
+			System.out.println();
+		}
+		return true;
 	}
 	
 	// Play a chapter of an audio book from list of audiobooks
 	public boolean playAudioBook(int index, int chapter)
 	{
+		//checks if the paramters are invalid
 		if (index < 1 || index > audiobooks.size()) //checks if the audiobook is inside the list
 		{
 			errorMsg = "AudioBook Not Found";
@@ -279,6 +317,7 @@ public class Library
 	// Make sure a playlist with the same title doesn't already exist
 	public boolean makePlaylist(String title)
 	{
+		//loops through to see if the playlist title exists
 		for (int i = 0; i<playlists.size();i++) {
 			if(playlists.get(i).getTitle().equals(title)) {
 				errorMsg = "Playlist " +title+" Already Exists";
@@ -293,6 +332,7 @@ public class Library
 	// Print list of content information (songs, audiobooks etc) in playlist named title from list of playlists
 	public boolean printPlaylist(String title)
 	{
+		//finds the playlist for the parameter
 		for (int i = 0; i<this.playlists.size();i++) {
 			
 			if(playlists.get(i).getTitle().equals(title)) {
@@ -307,6 +347,7 @@ public class Library
 	// Play all content in a playlist
 	public boolean playPlaylist(String playlistTitle)
 	{
+		//finds the playlist and plays it
 		for (int i = 0; i<this.playlists.size();i++) {
 			if(playlists.get(i).getTitle().equals(playlistTitle)) {
 				playlists.get(i).playAll();
@@ -324,9 +365,6 @@ public class Library
 			if (playlists.get(i).getTitle().equals(playlistTitle)) {
 				playlists.get(i).play(indexInPL);
 				return true;
-//				else if (type.equalsIgnoreCase("PODCAST")) {
-//					playlists.get(i).addContent(podcasts.get(index));
-//				}
 			}
 		}
 		return false;
@@ -346,9 +384,9 @@ public class Library
 				else if (type.equalsIgnoreCase("SONG")) {
 					playlists.get(i).addContent(songs.get(index));
 				}
-//				else if (type.equalsIgnoreCase("PODCAST")) {
-//					playlists.get(i).addContent(podcasts.get(index));
-//				}
+				else if (type.equalsIgnoreCase("PODCAST")) {
+					playlists.get(i).addContent(podcasts.get(index));
+				}
 				return true;
 			}
 			

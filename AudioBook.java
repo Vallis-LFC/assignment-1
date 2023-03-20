@@ -40,7 +40,7 @@ public class AudioBook extends AudioContent
 	public void printInfo()
 	{
 		super.printInfo();
-		System.out.print(" Author: "+this.author+" Narrator: "+this.narrator+"\n");
+		System.out.print("Author: "+this.author+" Narrator: "+this.narrator+"\n");
 	}
 
 	
@@ -51,7 +51,7 @@ public class AudioBook extends AudioContent
 	// Then make use of the the play() method of the superclass
 	public void play()
 	{
-		super.setAudioFile(chapterTitles.get(currentChapter)); //sets the chapter
+		super.setAudioFile(chapters.get(currentChapter)); //sets the chapter
 		super.play();
 	}
 	
