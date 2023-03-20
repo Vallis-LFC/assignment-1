@@ -49,9 +49,9 @@ public class Playlist
 	{
 		
 		for (int i = 0; i<contents.size();i++) {
-			System.out.println("does this pass");
 			System.out.print((i+1)+". ");
 			contents.get(i).printInfo();
+			System.out.println();
 		}
 	}
 
@@ -60,6 +60,7 @@ public class Playlist
 	{
 		for (int i = 0; i<this.contents.size();i++) {
 			this.play(i);
+		System.out.println();
 		}
 	}
 	
@@ -71,7 +72,8 @@ public class Playlist
 		{
 			System.out.println("Content Not Found");
 		}
-		this.contents.get(index).play();
+		System.out.print(this.title);
+		this.contents.get(index-1).play();
 	}
 	
 	public boolean contains(int index)

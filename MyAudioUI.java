@@ -92,9 +92,7 @@ public class MyAudioUI
 					if (mylibrary.playSong(index)==false) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-//				else {
-//					mylibrary.playSong(index);
-//				}
+
 			}
 			// Print the table of contents (TOC) of an audiobook that
 			// has been downloaded to the library. Get the desired book index
@@ -114,9 +112,7 @@ public class MyAudioUI
 					if (!mylibrary.printAudioBookTOC(index)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
-//					else {
-//					mylibrary.printAudioBookTOC(index);
-//				}
+
 				
 				
 			}
@@ -229,7 +225,7 @@ public class MyAudioUI
 					title = scanner.next();
 					scanner.nextLine();
 				}
-				System.out.print("Library Content: ");	//asks for the input of the content
+				System.out.print("Content Number: ");	//asks for the input of the content
 				if (scanner.hasNextInt()) {
 					index = scanner.nextInt();
 					scanner.nextLine();

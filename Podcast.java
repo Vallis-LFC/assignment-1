@@ -30,7 +30,7 @@ public static final String TYPENAME =	"PODCAST";
 	public void printInfo()
 	{
 		super.printInfo();
-		System.out.print("Host: "+this.host+"\n Seasons: "+this.seasons.size()+"\n");
+		System.out.print("Host: "+this.host+"\nSeasons: "+this.seasons.size()+"\n");
 
 	}
 
@@ -49,7 +49,7 @@ public static final String TYPENAME =	"PODCAST";
 	// See the video
 	public void printTOC(int season)																		
 	{
-		System.out.println("Seasons: "+this.seasons.size());
+		
 		for (int i = 0; i< seasons.get(season).episodeTitles.size() ;i++) {
 			System.out.println("Episode "+(i+1)+" ."+this.seasons.get(season).episodeTitles.get(i));
 			System.out.println();

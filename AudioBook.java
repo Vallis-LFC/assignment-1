@@ -52,14 +52,15 @@ public class AudioBook extends AudioContent
 	public void play()
 	{
 		super.setAudioFile(chapters.get(currentChapter)); //sets the chapter
+		System.out.print(chapterTitles.get(currentChapter));
 		super.play();
 	}
 	
 	// Print the table of contents of the book - i.e. the list of chapter titles
 	// See the video
-	public void printTOC()																		//return to this
+	public void printTOC()																	
 	{
-		System.out.println("did this repeat");
+		
 		for(int i =0; i<this.chapterTitles.size();i++) {
 			System.out.println("Chapter "+(i+1)+". "+chapterTitles.get(i));
 			System.out.println();

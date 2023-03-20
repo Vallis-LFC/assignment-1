@@ -272,11 +272,7 @@ public class Library
 			errorMsg = "Season Not Found";
 			return false;
 		}
-		ArrayList<String>epTitles = this.podcasts.get(index-1).getSeasons().get(season).episodeTitles; //creates a var for this long cmd
-		for (int i = 0; i<epTitles.size();i++ ) {
-			System.out.print("Episode "+(i+1)+". "+epTitles.get(i));
-			System.out.println();
-		}
+		this.podcasts.get(index-1).printTOC(season-1);
 		return true;
 	}
 	
