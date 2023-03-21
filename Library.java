@@ -367,6 +367,7 @@ public class Library
 				return true;
 			}
 		}
+		errorMsg = "Playlist Not Found";
 		return false;
 	}
 
@@ -381,20 +382,26 @@ public class Library
 				if (type.equalsIgnoreCase("AUDIOBOOK")) {
 					if(index-1<-1 || index-1>this.audiobooks.size()) {
 						playlists.get(i).addContent(audiobooks.get(index-1));
+						return true;
 					}
 					
 				}
 				else if (type.equalsIgnoreCase("SONG")) {
 					if(index-1<-1 || index-1>this.songs.size()) {
 						playlists.get(i).addContent(songs.get(index-1));
+						return true;
 					}
-					
 				}
 				else if (type.equalsIgnoreCase("PODCAST")) {
 					if(index-1<-1 || index-1>this.podcasts.size()) {
 						playlists.get(i).addContent(podcasts.get(index-1));
+						return true;
 					}
 					
+				}
+				else {
+					errorMsg = "Wrong Type Input";
+					return false;
 				}
 				return true;
 			}
@@ -413,6 +420,7 @@ public class Library
 				return true;
 			}
 		}
+		errorMsg = "Playlist Not Found";
 		return false;
 	}
 
