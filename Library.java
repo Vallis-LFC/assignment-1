@@ -242,18 +242,18 @@ public class Library
 			errorMsg = "Podcast Not Found";
 			return false;
 		}
-		if (season < 1 || season > podcasts.get(index).getSeasons().size())
+		if (season < 1 || season > podcasts.get(index-1).getSeasons().size())
 		{
 			errorMsg = "Season Not Found";
 			return false;
 		}
-		if (season < 1 || season > podcasts.get(index).getSeasons().get(season).episodeFiles.size())
+		if (episode < 1 || episode > podcasts.get(index-1).getSeasons().get(season-1).episodeFiles.size())
 		{
 			errorMsg = "Episode Not Found";
 			return false;
 		}
 		
-		this.podcasts.get(index).playEp(episode, season);
+		this.podcasts.get(index-1).playEp(episode, season);
 		return true;
 	}
 	

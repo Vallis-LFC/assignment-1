@@ -52,7 +52,6 @@ public class AudioBook extends AudioContent
 	public void play()
 	{
 		super.setAudioFile(chapters.get(currentChapter)); //sets the chapter
-		System.out.print(chapterTitles.get(currentChapter));
 		super.play();
 	}
 	
