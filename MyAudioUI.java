@@ -241,7 +241,7 @@ public class MyAudioUI
 			else if (action.equalsIgnoreCase("DELSONG")) 												
 			{
 				int index = 0;
-				System.out.print("Song Number: ");	//asks for the input of the song
+				System.out.print("Library Song: ");	//asks for the input of the song
 				if (scanner.hasNextInt()) {
 					index = scanner.nextInt();
 					scanner.nextLine();
@@ -322,7 +322,7 @@ public class MyAudioUI
 					title = scanner.next();
 					scanner.nextLine();
 				}
-				System.out.println("Library Content #:");
+				System.out.print("Playlist Content #:");
 				if (scanner.hasNextInt()) {
 					index = scanner.nextInt();
 					scanner.nextLine();

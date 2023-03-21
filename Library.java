@@ -10,14 +10,14 @@ public class Library
 	private ArrayList<Song> 			songs; 
 	private ArrayList<AudioBook> 	audiobooks;
 	private ArrayList<Playlist> 	playlists; 
-	
+
 	private ArrayList<Podcast> 	podcasts;
-	
+
 	// Public methods in this class set errorMesg string 
 	// Error Messages can be retrieved from main in class MyAudioUI by calling  getErrorMessage()
 	// In assignment 2 we will replace this with Java Exceptions
 	String errorMsg = "";
-	
+
 	public String getErrorMessage()
 	{
 		return errorMsg;
@@ -62,7 +62,7 @@ public class Library
 			Song download = (Song) content;
 			songs.add(download);
 		}
-		
+
 		//for podcast
 		else if (content.getType() == "PODCAST") {
 			for (int i = 0; i<podcasts.size();i++) {
@@ -76,7 +76,7 @@ public class Library
 		}
 		return true;
 	}
-	
+
 	// Print Information (printInfo()) about all songs in the array list
 	public void listAllSongs()
 	{
@@ -88,7 +88,7 @@ public class Library
 			System.out.println(""+ "\n");	
 		}
 	}
-	
+
 	// Print Information (printInfo()) about all audiobooks in the array list
 	public void listAllAudioBooks()
 	{
@@ -99,16 +99,16 @@ public class Library
 			System.out.println();
 		}
 	}
-	
-  // Print Information (printInfo()) about all podcasts in the array list
+
+	// Print Information (printInfo()) about all podcasts in the array list
 	public void listAllPodcasts()
 	{
 		for (int i = 0; i<this.podcasts.size();i++) {
 			this.podcasts.get(i).printInfo();
 		}
 	}
-	
-  // Print the name of all playlists in the playlists array list
+
+	// Print the name of all playlists in the playlists array list
 	// First print the index number as in listAllSongs() above
 	public void listAllPlaylists()
 	{
@@ -120,8 +120,8 @@ public class Library
 			System.out.println();	
 		}
 	}
-	
-  // Print the name of all artists. 
+
+	// Print the name of all artists. 
 	/**
 	 * prints the name of all artists
 	 */
@@ -154,24 +154,27 @@ public class Library
 		this.songs.remove(index);
 		for (int i = 0; i<this.playlists.size();i++) { //loops through all playlists to ensure none of them are left out.
 			for (int x = 0; x<this.playlists.get(i).getContent().size();x++) { // loops through the playlist to find the song
-				if (playlists.get(i).getContent().get(x).equals(this.songs.get(index)) && this.playlists.get(i).getContent().get(x).getType().equals("SONG")) { //checks if equal and checks if type is song 
-					this.playlists.get(i).getContent().remove(x);	//removes the song in the playlist
-					return true;
+				if (this.playlists.get(i).getContent().get(x).getType().equalsIgnoreCase("SONG")) {
+					if (playlists.get(i).getContent().get(x).equals(this.songs.get(index))) { //checks if equal and checks if type is song 
+						this.playlists.get(i).getContent().remove(x);	//removes the song in the playlist
+						return true;
+					}
+				}
+
 			}
-			}
-			
+
 		}
 		return false;
 	}
-	
-  //Sort songs in library by year
+
+	//Sort songs in library by year
 	public void sortSongsByYear()
 	{
 		// Use Collections.sort() 
 		Collections.sort(this.songs,new SongYearComparator());
-	
+
 	}
-  // Write a class SongYearComparator that implements
+	// Write a class SongYearComparator that implements
 	// the Comparator interface and compare two songs based on year
 	private class SongYearComparator implements Comparator <Song>
 	{
@@ -181,44 +184,44 @@ public class Library
 		}
 
 	}
-	
+
 
 	// Sort songs by length
 	public void sortSongsByLength()
 	{
-	 // Use Collections.sort() 
+		// Use Collections.sort() 
 		Collections.sort(this.songs,new SongLengthComparator());
 	}
-  // Write a class SongLengthComparator that implements
+	// Write a class SongLengthComparator that implements
 	// the Comparator interface and compare two songs based on length
 	private class SongLengthComparator implements Comparator<Song>
 	{
 
-	@Override
-	public int compare(Song song1, Song other) {
-		
-		return song1.getLength() - other.getLength();
-	}
-		
+		@Override
+		public int compare(Song song1, Song other) {
+
+			return song1.getLength() - other.getLength();
+		}
+
 	}
 
 	// Sort songs by title 
 	public void sortSongsByName()
 	{
-	  // Use Collections.sort()
+		// Use Collections.sort()
 		// class Song should implement the Comparable interface
 		// see class Song code
-		
+
 		Collections.sort(this.songs);
-		
+
 	}
 
-	
-	
+
+
 	/*
 	 * Play Content
 	 */
-	
+
 	// Play song from songs list
 	public boolean playSong(int index)
 	{
@@ -227,11 +230,11 @@ public class Library
 			errorMsg = "Song Not Found";
 			return false;
 		}
-	
+
 		songs.get(index-1).play();
 		return true;
 	}
-	
+
 	// Play podcast from list (specify season and episode)
 	// Bonus
 	public boolean playPodcast(int index, int season, int episode)
@@ -252,11 +255,11 @@ public class Library
 			errorMsg = "Episode Not Found";
 			return false;
 		}
-		
+
 		this.podcasts.get(index-1).playEp(episode-1, season-1);
 		return true;
 	}
-	
+
 	// Print the episode titles of a specified season
 	// Bonus 
 	public boolean printPodcastEpisodes(int index, int season)
@@ -272,11 +275,11 @@ public class Library
 			errorMsg = "Season Not Found";
 			return false;
 		}
-		
+
 		this.podcasts.get(index-1).printTOC(season);
 		return true;
 	}
-	
+
 	// Play a chapter of an audio book from list of audiobooks
 	public boolean playAudioBook(int index, int chapter)
 	{
@@ -290,7 +293,7 @@ public class Library
 		this.audiobooks.get(index-1).play();
 		return true;
 	}
-	
+
 	// Print the chapter titles (Table Of Contents) of an audiobook
 	// see class AudioBook
 	public boolean printAudioBookTOC(int index)
@@ -300,16 +303,16 @@ public class Library
 			errorMsg = "AudioBook Not Found";
 			return false;
 		}
-		
-		
+
+
 		this.audiobooks.get(index-1).printTOC();
 		return true;
 	}
-	
-  /*
-   * Playlist Related Methods
-   */
-	
+
+	/*
+	 * Playlist Related Methods
+	 */
+
 	// Make a new playlist and add to playlists array list
 	// Make sure a playlist with the same title doesn't already exist
 	public boolean makePlaylist(String title)
@@ -325,13 +328,13 @@ public class Library
 		playlists.add(newPl);
 		return true;
 	}
-	
+
 	// Print list of content information (songs, audiobooks etc) in playlist named title from list of playlists
 	public boolean printPlaylist(String title)
 	{
 		//finds the playlist for the parameter
 		for (int i = 0; i<this.playlists.size();i++) {
-			
+
 			if(playlists.get(i).getTitle().equals(title)) {
 				playlists.get(i).printContents();
 				return true;
@@ -340,7 +343,7 @@ public class Library
 		errorMsg = "Playlist Not Found";
 		return false;
 	}
-	
+
 	// Play all content in a playlist
 	public boolean playPlaylist(String playlistTitle)
 	{
@@ -354,7 +357,7 @@ public class Library
 		errorMsg = "Playlist Not Found";
 		return false;
 	}
-	
+
 	// Play a specific song/audiobook in a playlist
 	public boolean playPlaylist(String playlistTitle, int indexInPL)
 	{
@@ -366,7 +369,7 @@ public class Library
 		}
 		return false;
 	}
-	
+
 	// Add a song/audiobook/podcast from library lists at top to a playlist
 	// Use the type parameter and compare to Song.TYPENAME etc
 	// to determine which array list it comes from then use the given index
@@ -376,32 +379,41 @@ public class Library
 		for (int i = 0; i<this.playlists.size();i++) {
 			if (playlists.get(i).getTitle().equals(playlistTitle)) {
 				if (type.equalsIgnoreCase("AUDIOBOOK")) {
-					playlists.get(i).addContent(audiobooks.get(index-1));
+					if(index-1<-1 || index-1>this.audiobooks.size()) {
+						playlists.get(i).addContent(audiobooks.get(index-1));
+					}
+					
 				}
 				else if (type.equalsIgnoreCase("SONG")) {
-					playlists.get(i).addContent(songs.get(index-1));
+					if(index-1<-1 || index-1>this.songs.size()) {
+						playlists.get(i).addContent(songs.get(index-1));
+					}
+					
 				}
 				else if (type.equalsIgnoreCase("PODCAST")) {
-					playlists.get(i).addContent(podcasts.get(index-1));
+					if(index-1<-1 || index-1>this.podcasts.size()) {
+						playlists.get(i).addContent(podcasts.get(index-1));
+					}
+					
 				}
 				return true;
 			}
-			
+
 		}
 		return false;
 	}
 
-  // Delete a song/audiobook/podcast from a playlist with the given title
+	// Delete a song/audiobook/podcast from a playlist with the given title
 	// Make sure the given index of the song/audiobook/podcast in the playlist is valid 
 	public boolean delContentFromPlaylist(int index, String title)
 	{
 		for (int i = 0; i<this.playlists.size();i++) {
 			if (playlists.get(i).getTitle().equals(title)) {
-					playlists.get(i).deleteContent(index);
+				playlists.get(i).deleteContent(index);
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 }

@@ -72,7 +72,7 @@ public class Playlist
 		{
 			System.out.println("Content Not Found");
 		}
-		System.out.print(this.title);
+		
 		this.contents.get(index).play();
 	}
 	
