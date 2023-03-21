@@ -253,7 +253,7 @@ public class Library
 			return false;
 		}
 		
-		this.podcasts.get(index-1).playEp(episode, season);
+		this.podcasts.get(index-1).playEp(episode-1, season-1);
 		return true;
 	}
 	

@@ -52,7 +52,12 @@ public class AudioBook extends AudioContent
 	public void play()
 	{
 		super.setAudioFile(chapters.get(currentChapter)); //sets the chapter
-		super.play();
+		
+		//not using the super method since there is a title wedged in there for audiobook specifically
+		this.printInfo();
+		System.out.print("\n"+this.chapterTitles.get(currentChapter)+(".".repeat(currentChapter)));
+		// Simulate playing of the audio file. For example, for a song this would be printing the lyrics
+		System.out.println("\n" + this.getAudioFile());
 	}
 	
 	// Print the table of contents of the book - i.e. the list of chapter titles
@@ -72,6 +77,7 @@ public class AudioBook extends AudioContent
 		if (chapter >= 1 && chapter <= chapters.size())
 		{
 			currentChapter = chapter - 1;
+			
 		}
 	}
 	

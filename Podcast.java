@@ -42,7 +42,11 @@ public static final String TYPENAME =	"PODCAST";
 	public void playEp(int episode, int season)
 	{	
 		super.setAudioFile(seasons.get(season).episodeFiles.get(episode)); //sets the chapter
-		super.play();
+		//not using the super method since there is a title wedged in there for audiobook specifically
+		this.printInfo();
+		System.out.print("\n"+this.seasons.get(season).episodeTitles.get(episode)+(".".repeat(episode)));
+		// Simulate playing of the audio file. For example, for a song this would be printing the lyrics
+		System.out.println("\n" + this.getAudioFile());
 	}
 	
 	// Print the table of contents of the book - i.e. the list of chapter titles
