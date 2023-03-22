@@ -278,9 +278,12 @@ public class MyAudioUI
 					title = scanner.next();
 					scanner.nextLine();
 				}
-				if (!mylibrary.printPlaylist(title)) {
-					System.out.println(mylibrary.getErrorMessage());
-				}
+//				if (!mylibrary.printPlaylist(title)) {
+//					System.out.println(mylibrary.getErrorMessage());
+//				}
+//				else{
+					mylibrary.printPlaylist(title);
+				
 
 
 			}

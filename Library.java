@@ -116,7 +116,7 @@ public class Library
 		{
 			int index = i + 1;
 			System.out.print("" + index + ". ");
-			this.playlists.get(i).getTitle();
+			System.out.print(this.playlists.get(i).getTitle());
 			System.out.println();	
 		}
 	}
@@ -381,23 +381,24 @@ public class Library
 			if (playlists.get(i).getTitle().equals(playlistTitle)) {
 				if (type.equalsIgnoreCase("AUDIOBOOK")) {
 					if(index-1<-1 || index-1>this.audiobooks.size()) {
-						playlists.get(i).addContent(audiobooks.get(index-1));
-						return true;
+						errorMsg = "AudioBook Not Found";
+						return false;
 					}
-					
+					playlists.get(i).addContent(audiobooks.get(index-1));
 				}
 				else if (type.equalsIgnoreCase("SONG")) {
 					if(index-1<-1 || index-1>this.songs.size()) {
-						playlists.get(i).addContent(songs.get(index-1));
-						return true;
+						errorMsg = "Song Not Found";
+						return false;
 					}
+					playlists.get(i).addContent(songs.get(index-1));
 				}
 				else if (type.equalsIgnoreCase("PODCAST")) {
 					if(index-1<-1 || index-1>this.podcasts.size()) {
-						playlists.get(i).addContent(podcasts.get(index-1));
-						return true;
+						errorMsg = "Podcast Not Found";
+						return false;
 					}
-					
+					playlists.get(i).addContent(podcasts.get(index-1));
 				}
 				else {
 					errorMsg = "Wrong Type Input";
