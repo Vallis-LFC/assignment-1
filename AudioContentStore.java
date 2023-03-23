@@ -1,3 +1,6 @@
+//Vallis King Hang Luong
+//501214102
+
 import java.util.ArrayList;
 
 // Simulation of audio content in an online store

@@ -1,3 +1,6 @@
+//Vallis King Hang Luong
+//501214102
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;

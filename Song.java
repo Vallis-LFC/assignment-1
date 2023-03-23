@@ -1,3 +1,6 @@
+//Vallis King Hang Luong
+//501214102
+
 /*
  * A Song is a type of AudioContent. A Song has extra fields such as Artist (person(s) singing the song) and composer 
  */
