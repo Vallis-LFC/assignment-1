@@ -410,7 +410,10 @@ public class Library
 				}
 				return true;
 			}
-
+			else {
+				errorMsg = "Unknown Playlist Title";
+				return false;
+			}
 		}
 		return false;
 	}

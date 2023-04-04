@@ -233,7 +233,7 @@ public class MyAudioUI
 					index = scanner.nextInt();
 					scanner.nextLine();
 				}
-				if (!mylibrary.playPlaylist(title,index)) {
+				if (!mylibrary.playPlaylist(title,index-1)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
 
@@ -249,7 +249,7 @@ public class MyAudioUI
 					index = scanner.nextInt();
 					scanner.nextLine();
 				}
-				if (!mylibrary.deleteSong(index)) {
+				if (!mylibrary.deleteSong(index-1)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
 
@@ -339,6 +339,13 @@ public class MyAudioUI
 				if(!mylibrary.delContentFromPlaylist(index, title)) {
 					System.out.println(mylibrary.getErrorMessage());
 				}
+			}
+			//search store with specific title, if found then print index and info, use map
+			else if(action.equalsIgnoreCase("SEARCH")) {
+				
+			}
+			else if(action.equalsIgnoreCase("SEARCHA")) {
+				
 			}
 
 			else if (action.equalsIgnoreCase("SORTBYYEAR")) // sort songs by year
